@@ -1,140 +1,203 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Spartan Gym Fitness</title>
+    <title>Spartan Smart Gym - Cybernetic Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        /* --- VARIABLES DE COLOR --- */
+        /* --- VARIABLES CYBERPUNK/FUTURISTAS --- */
         :root {
-            --fondo: #121212;
-            --texto: #f4f4f4;
-            --rojo-espartano: #d32f2f;
-            --gris-oscuro: #1e1e1e;
+            --fondo: #050810; /* Azul casi negro profundo */
+            --texto: #e0fbfc;
+            --neon-azul: #00f3ff;
+            --neon-rojo: #d32f2f; /* Ajustado al rojo del logo */
+            --panel-bg: rgba(0, 24, 40, 0.6);
+            --borde-cyber: 1px solid var(--neon-azul);
         }
 
-        /* --- RESETEO BÁSICO --- */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Aplicamos la fuente futurista por defecto a los títulos */
+            font-family: 'Orbitron', sans-serif;
         }
 
         body {
             background-color: var(--fondo);
             color: var(--texto);
             line-height: 1.6;
+            /* Patrón de cuadrícula tenue para dar efecto de circuito/tecnología */
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
-        /* --- NAVEGACIÓN --- */
+        /* --- HEADER --- */
         header {
-            background-color: var(--gris-oscuro);
-            padding: 20px 50px;
+            background-color: rgba(5, 8, 16, 0.95);
+            padding: 15px 50px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 3px solid var(--rojo-espartano);
+            border-bottom: 2px solid var(--neon-rojo);
+            box-shadow: 0 0 15px rgba(211, 47, 47, 0.4); /* Resplandor rojo */
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-container img {
+            width: 60px; /* Logo en miniatura para la barra de arriba */
+            height: 60px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--neon-azul);
         }
 
         header h1 {
-            color: var(--rojo-espartano);
+            color: var(--neon-rojo);
             font-size: 24px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            text-shadow: 0 0 8px rgba(211, 47, 47, 0.7);
         }
 
         nav a {
             color: var(--texto);
             text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-            transition: color 0.3s;
+            margin-left: 25px;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
         }
 
         nav a:hover {
-            color: var(--rojo-espartano);
+            color: var(--neon-azul);
+            text-shadow: 0 0 8px var(--neon-azul);
         }
 
-        /* --- SECCIÓN PRINCIPAL (HERO) --- */
+        /* --- HERO (SECCIÓN PRINCIPAL) --- */
         .hero {
-            /* Usamos una imagen de fondo de un gym sacada de Unsplash */
-            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop') center/cover;
-            height: 80vh;
+            background: linear-gradient(to bottom, rgba(5, 8, 16, 0.6), rgba(5, 8, 16, 1)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1470&auto=format&fit=crop') center/cover;
+            height: 85vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
             padding: 0 20px;
+            border-bottom: 1px solid var(--neon-azul);
+        }
+
+        .hero img.logo-grande {
+            width: 220px;
+            margin-bottom: 20px;
+            border-radius: 50%;
+            /* Efecto de latido/pulso luminoso en el logo central */
+            animation: pulso 2s infinite; 
+        }
+
+        @keyframes pulso {
+            0% { filter: drop-shadow(0 0 10px var(--neon-azul)); transform: scale(1); }
+            50% { filter: drop-shadow(0 0 30px var(--neon-azul)); transform: scale(1.02); }
+            100% { filter: drop-shadow(0 0 10px var(--neon-azul)); transform: scale(1); }
         }
 
         .hero h2 {
-            font-size: 50px;
-            margin-bottom: 20px;
+            font-size: 45px;
+            margin-bottom: 15px;
+            color: #fff;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--neon-azul), 0 0 20px var(--neon-azul);
         }
 
         .hero p {
-            font-size: 20px;
+            font-size: 18px;
             margin-bottom: 30px;
             max-width: 600px;
+            color: #ccc;
+            font-family: 'Segoe UI', Tahoma, sans-serif; /* Texto normal para que sea fácil de leer */
         }
 
         .btn-principal {
-            background-color: var(--rojo-espartano);
-            color: white;
-            padding: 15px 30px;
+            background-color: transparent;
+            color: var(--neon-rojo);
+            padding: 15px 35px;
             text-decoration: none;
             font-size: 18px;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background 0.3s;
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            border: 2px solid var(--neon-rojo);
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(211, 47, 47, 0.3), inset 0 0 10px rgba(211, 47, 47, 0.2);
+            transition: all 0.3s ease;
         }
 
         .btn-principal:hover {
-            background-color: #b71c1c;
+            background-color: var(--neon-rojo);
+            color: #fff;
+            box-shadow: 0 0 20px var(--neon-rojo), inset 0 0 15px rgba(255,255,255,0.3);
         }
 
-        /* --- SECCIÓN HORARIOS --- */
+        /* --- SECCIONES GENÉRICAS --- */
         .seccion {
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
             max-width: 1000px;
             margin: auto;
         }
 
         .seccion h3 {
-            font-size: 36px;
-            color: var(--rojo-espartano);
+            font-size: 32px;
+            color: var(--neon-azul);
             margin-bottom: 40px;
             text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.5);
         }
 
+        /* --- TABLA DE HORARIOS --- */
         .tabla-horarios {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
-            background-color: var(--gris-oscuro);
+            background-color: var(--panel-bg);
+            backdrop-filter: blur(5px);
+            border: var(--borde-cyber);
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.1);
         }
 
         .tabla-horarios th, .tabla-horarios td {
-            padding: 15px;
-            border: 1px solid #333;
+            padding: 18px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            font-family: 'Segoe UI', Tahoma, sans-serif;
         }
 
         .tabla-horarios th {
-            background-color: var(--rojo-espartano);
-            color: white;
+            background-color: rgba(0, 243, 255, 0.1);
+            color: var(--neon-azul);
             text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 1px;
         }
 
-        /* --- GALERÍA DE FOTOS --- */
+        /* --- GALERÍA --- */
         .galeria {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
+            gap: 25px;
             margin-top: 30px;
         }
 
@@ -142,41 +205,58 @@
             width: 100%;
             height: 250px;
             object-fit: cover;
-            border-radius: 8px;
-            transition: transform 0.3s;
+            border-radius: 4px;
+            border: 1px solid rgba(0, 243, 255, 0.3);
+            transition: all 0.4s ease;
+            /* Filtro grisáceo para dar ambiente oscuro que se ilumina al pasar el mouse */
+            filter: grayscale(50%) contrast(120%); 
         }
 
         .galeria img:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
+            border-color: var(--neon-rojo);
+            box-shadow: 0 0 15px rgba(211, 47, 47, 0.5);
+            filter: grayscale(0%) contrast(100%);
         }
 
         /* --- FOOTER / CONTACTO --- */
         footer {
-            background-color: var(--gris-oscuro);
-            padding: 40px 20px;
+            background-color: #020305;
+            padding: 50px 20px;
             text-align: center;
-            border-top: 3px solid var(--rojo-espartano);
+            border-top: 2px solid var(--neon-azul);
+            box-shadow: 0 -5px 15px rgba(0, 243, 255, 0.2);
         }
 
         footer p {
-            margin: 10px 0;
-            font-size: 18px;
+            margin: 15px 0;
+            font-size: 16px;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
         }
 
         footer a {
-            color: var(--rojo-espartano);
+            color: var(--neon-azul);
             text-decoration: none;
             font-weight: bold;
+            transition: 0.3s;
         }
 
-        /* --- RESPONSIVE BÁSICO (Para celulares) --- */
+        footer a:hover {
+            color: var(--neon-rojo);
+            text-shadow: 0 0 5px var(--neon-rojo);
+        }
+
+        /* --- RESPONSIVE (Celulares) --- */
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 gap: 15px;
             }
             .hero h2 {
-                font-size: 36px;
+                font-size: 30px;
+            }
+            .hero img.logo-grande {
+                width: 160px;
             }
         }
     </style>
@@ -184,7 +264,10 @@
 <body>
 
     <header>
-        <h1>Spartan Gym</h1>
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo Spartan Gym">
+            <h1>Spartan Smart Gym</h1>
+        </div>
         <nav>
             <a href="#horarios">Horarios</a>
             <a href="#galeria">Instalaciones</a>
@@ -193,13 +276,14 @@
     </header>
 
     <section class="hero">
-        <h2>Forja tu mejor versión</h2>
-        <p>Entrenamiento de fuerza, peso libre, hipertrofia y acondicionamiento. Sumate a la legión y llevá tu cuerpo al siguiente nivel.</p>
-        <a href="#contacto" class="btn-principal">Unite Hoy</a>
+        <img src="logo.jpg" alt="Logo Spartan Gym Central" class="logo-grande">
+        <h2>Forja tu Futuro Cybernético</h2>
+        <p>Sube de nivel. Entrenamiento de fuerza y acondicionamiento con precisión digital. Bienvenidos a la nueva era del fitness.</p>
+        <a href="#contacto" class="btn-principal">Iniciar Secuencia</a>
     </section>
 
     <section id="horarios" class="seccion">
-        <h3>Nuestros Horarios</h3>
+        <h3>Horarios de Sincronización</h3>
         <table class="tabla-horarios">
             <tr>
                 <th>Día</th>
@@ -225,8 +309,8 @@
     </section>
 
     <section id="galeria" class="seccion">
-        <h3>Nuestras Instalaciones</h3>
-        <p>Maquinaria de última generación y sector de peso libre.</p>
+        <h3>Instalaciones Neurales</h3>
+        <p style="font-family: 'Segoe UI', Tahoma, sans-serif; color: #ccc; margin-bottom: 20px;">Maquinaria de última generación para llevar tu fuerza al límite.</p>
         <div class="galeria">
             <img src="https://images.unsplash.com/photo-1540497077202-7c8a3999166f?q=80&w=500&auto=format&fit=crop" alt="Sector de pesas">
             <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?q=80&w=500&auto=format&fit=crop" alt="Máquinas del gym">
@@ -235,13 +319,12 @@
     </section>
 
     <footer id="contacto">
-        <h3>Contacto</h3>
-        <p>📍 Av. Falsa 123, Ciudad</p>
-        <p>📱 WhatsApp: <a href="https://wa.me/5491100000000" target="_blank">+54 9 11 1234-5678</a></p>
-        <p>📸 Instagram: <a href="https://instagram.com/" target="_blank">@SpartanGymFitness</a></p>
-        <p style="margin-top: 20px; font-size: 14px; color: #777;">&copy; 2026 Spartan Gym Fitness. Todos los derechos reservados.</p>
+        <h3>Contacto Digital</h3>
+        <p>📍 Dirección: Salta y Av. cordoba 3212 - Floresta Norte CÓRDOBA</p>
+        <p>📱 WhatsApp: <a href="https://wa.me/5493513536101" target="_blank">+54 9 3513 53-6101</a></p>
+        <p>📸 Instagram: <a href="https://www.instagram.com/spartan_gym_fit?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank">@spartan_gym_fit</a></p>
+        <p style="margin-top: 30px; font-size: 12px; color: #555; font-family: 'Orbitron', sans-serif;">&copy; 2026 SPARTAN SMART GYM. SISTEMA OPERATIVO ACTIVO.</p>
     </footer>
 
 </body>
-
 </html>
